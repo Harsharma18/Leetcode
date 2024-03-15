@@ -1,6 +1,7 @@
 import java.util.*;
 class Solution {
     public int removeDuplicates(int[] nums) {
+        //Time Complexity: O(n) Space Complexity: O(1)
         int n = nums.length;
         if(n==0){
             return 0;
