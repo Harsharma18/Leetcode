@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
 public class Solution {
+    //Time Complexity: O(n)
+    //Space Complexity: O(n)
     public boolean check(int[] nums) {
         int n = nums.length;
         int count = 0;
@@ -20,12 +22,13 @@ public class Solution {
             if (nums[index] > nums[nextIndex]) {
                 count++;
             }
+            if(count>1){
+                return false;
+            }
         }
 
-    if(count<=1){
-        return true;
-    }
-    return false;
+    
+    return true;
     }
 
     public static void main(String[] args) {
