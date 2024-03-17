@@ -46,7 +46,7 @@ class Solution {
          while (left + 1 < right) {
              int mid = left + (right - left) / 2;
 
-             if (nums[mid] != nums[mid - 1] && (mid + 1 == nums.length || nums[mid] != nums[mid + 1])) {
+             if (nums[mid] != nums[mid - 1] && (mid + 1== nums.length || nums[mid] != nums[mid + 1])) {
                  return nums[mid];
              } else if ((mid % 2 == 0 && nums[mid] == nums[mid + 1]) || (mid % 2 != 0 && nums[mid] == nums[mid - 1])) {
                  left = mid;
