@@ -22,20 +22,23 @@ class Solution {
                 return nums[mid];
             }
             
-            if (nums[mid] == nums[mid - 1]) {
+              if (mid % 2 == 1) {
                 // If mid is odd, then the single element is to the right
-                if (mid % 2 == 1) {
+                if (nums[mid] == nums[mid - 1]) {
                     start = mid + 1;
                 } else {
                     end = mid - 1;
                 }
             } else {
                 // If mid is even, then the single element is to the right
-                if (mid % 2 == 0) {
+                 if (mid % 2 == 0) {
+                // If mid is odd, then the single element is to the right
+                if (nums[mid] == nums[mid +1]) {
                     start = mid + 1;
                 } else {
                     end = mid - 1;
                 }
+            }
             }
         }
         
