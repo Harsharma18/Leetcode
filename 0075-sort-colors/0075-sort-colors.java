@@ -1,5 +1,5 @@
 class Solution {
-    public void sortColors(int[] nums) {
+    public void sortColors(int[] nums) {//o(n) time and o(1) space
 //         int count0 = 0;
 //         int count1 = 0;
 //         int count2 = 0;
@@ -25,6 +25,7 @@ class Solution {
 //          for(int i=count0+count1;i<nums.length;i++){
 //             nums[i] = 2;
 //         }
+        //moore voting algorithm optimal approach o(n)time and o(1) space 
         
       int low = 0;
         int high = nums.length - 1;
