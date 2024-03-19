@@ -28,7 +28,7 @@ class Solution {
         
       int low = 0;
         int high = nums.length - 1;
-        int mid = 0;
+        int mid = 0; //not mid it is pointer
         while (mid <= high) {
             if (nums[mid] == 0) {
                 int temp = nums[mid];
@@ -37,9 +37,9 @@ class Solution {
                 low++;
                 mid++;
             } else if (nums[mid] == 2) {
-                 int temp1 = nums[high];
-                nums[high] = nums[mid];
-                nums[mid] = temp1;
+                 int temp1 = nums[mid];
+                nums[mid] = nums[high];
+                nums[high] = temp1;
                 high--;
                 
             } else { // nums[mid] == 1
