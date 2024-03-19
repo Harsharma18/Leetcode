@@ -36,13 +36,15 @@ class Solution {
                 nums[low] = temp;
                 low++;
                 mid++;
-            } else if (nums[mid] == 1) {
-                mid++;
-            } else { // nums[mid] == 2
-                int temp1 = nums[high];
+            } else if (nums[mid] == 2) {
+                 int temp1 = nums[high];
                 nums[high] = nums[mid];
                 nums[mid] = temp1;
                 high--;
+                
+            } else { // nums[mid] == 1
+                mid++;
+               
             }
         
             
