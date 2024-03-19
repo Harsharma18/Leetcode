@@ -17,6 +17,8 @@ class Solution {
             }
           
         }
+        
+        //for confirming 
         for(int i=0;i<nums.length;i++){
             if(nums[i]==el){
                 count++;
@@ -25,7 +27,7 @@ class Solution {
              if(count>n/2){
                 return el;
             }
-        }
+         }
         
        
         return -1;
