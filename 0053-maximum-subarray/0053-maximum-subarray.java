@@ -1,5 +1,5 @@
 class Solution {
-    public int maxSubArray(int[] nums) {
+    public int maxSubArray(int[] nums) {//o(n) time and o(1) space complexity
         int n = nums.length;
         int maxSum = Integer.MIN_VALUE;
         int currSum = 0;
@@ -9,14 +9,12 @@ class Solution {
             
             if (currSum >= 0) {
                 currSum = Math.max(nums[i],currSum+nums[i]);
-               // currSum = currSum+nums[i];
+              
               
              } else {
                 currSum = nums[i];
              }
-            // if(currSum<0){
-            //     currSum=0;
-            // }
+            //
            
             if(currSum>maxSum){
                 maxSum = currSum;
