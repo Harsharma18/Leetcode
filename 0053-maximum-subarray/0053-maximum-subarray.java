@@ -9,10 +9,14 @@ class Solution {
             
             if (currSum >= 0) {
                 currSum = Math.max(nums[i],currSum+nums[i]);
+               // currSum = currSum+nums[i];
               
-            } else {
+             } else {
                 currSum = nums[i];
-            }
+             }
+            // if(currSum<0){
+            //     currSum=0;
+            // }
            
             if(currSum>maxSum){
                 maxSum = currSum;
