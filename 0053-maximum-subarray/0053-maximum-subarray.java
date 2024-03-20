@@ -5,10 +5,11 @@ class Solution {
         int currSum = 0;
        
         for(int i=0;i<n;i++){
-            // currSum = Math.max(nums[i],currSum+nums[i]);
+            
             
             if (currSum >= 0) {
-                currSum = currSum + nums[i];
+                currSum = Math.max(nums[i],currSum+nums[i]);
+              
             } else {
                 currSum = nums[i];
             }
