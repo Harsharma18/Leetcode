@@ -1,33 +1,39 @@
 class Solution {
     public void nextPermutation(int[] nums) {
-        int i = nums.length - 2;
-        while (i >= 0 && nums[i] >= nums[i + 1]) {
-            i--;
+        int n = nums.length;
+        int index = n - 2;
+
+        // Find break point
+        while (index >= 0 && nums[index] >= nums[index + 1]) {
+            index--;
         }
-        
-        if (i >= 0) {
-            int j = nums.length - 1;
-            while (nums[j] <= nums[i]) {
-                j--;
+
+        // If break point is found
+        if (index >= 0) {
+            // Find smallest element greater than nums[index] from the right
+            int smallestGreaterIndex = n - 1;
+            for (int j = n - 1; j > index; j--) {
+                if (nums[j] > nums[index]) { // Only compare if greater, no need to compare with smallestGreaterIndex
+                    smallestGreaterIndex = j;
+                    break; // Since you found the smallest greater element, no need to continue the loop
+                }
             }
-            swap(nums, i, j);
+
+            // Swap nums[index] and nums[smallestGreaterIndex]
+            int temp = nums[index];
+            nums[index] = nums[smallestGreaterIndex];
+            nums[smallestGreaterIndex] = temp;
         }
-        
-        reverse(nums, i + 1);
-    }
-    
-    private void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
-    }
-    
-    private void reverse(int[] nums, int start) {
-        int i = start, j = nums.length - 1;
-        while (i < j) {
-            swap(nums, i, j);
-            i++;
-            j--;
+
+        // Reverse the elements from index+1 to the end
+        int left = index + 1;
+        int right = n - 1;
+        while (left < right) {
+            int temp = nums[left];
+            nums[left] = nums[right];
+            nums[right] = temp;
+            left++;
+            right--;
         }
     }
 }
