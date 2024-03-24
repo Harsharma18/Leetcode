@@ -34,6 +34,8 @@ class Solution {
         //     nums[right] = temp;
         //     left++;
         //     right--;
+        
+        //or  o(n) time  and o(1)
        int n = nums.length;
         int index = -1;
         // Find break point
