@@ -11,9 +11,11 @@ class Solution {
                 break;
             }
         }
-        
-        // Find slightly greater element 
-        if (index != -1) {
+        if(index==-1){
+            reverse(nums,0,n-1);
+        }else{
+              // Find slightly greater element 
+       
             for (int j = n - 1; j > index; j--) {
                 if (nums[j] > nums[index]) {
                     // int temp = nums[j];
@@ -24,9 +26,14 @@ class Solution {
                     break;
                 }
             }
-        }
+            
+    
+        
+      
+        
          // Reverse the elements from index+1 to the end
         reverse(nums,index+1,n-1);
+    }
     }
         
        
