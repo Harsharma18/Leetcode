@@ -1,41 +1,7 @@
 class Solution {
     public void nextPermutation(int[] nums) {
-//         int n = nums.length;
-//         int index = n - 2;
-
-//         // Find break point
-//         while (index >= 0 && nums[index] >= nums[index + 1]) {
-//             index--;
-//         }
-
-//         // If break point is found
-//         if (index >= 0) {
-//             // Find smallest element greater than nums[index] from the right
-//             int smallestGreaterIndex = n - 1;
-//             for (int j = n - 1; j > index; j--) {
-//                 if (nums[j] > nums[index]) { // Only compare if greater, no need to compare with smallestGreaterIndex
-//                     smallestGreaterIndex = j;
-//                     break; // Since you found the smallest greater element, no need to continue the loop
-//                 }
-//             }
-
-//             // Swap nums[index] and nums[smallestGreaterIndex]
-//             int temp = nums[index];
-//             nums[index] = nums[smallestGreaterIndex];
-//             nums[smallestGreaterIndex] = temp;
-//         }
-
-        // // Reverse the elements from index+1 to the end
-        // int left = index + 1;
-        // int right = n - 1;
-        // while (left < right) {
-        //     int temp = nums[left];
-        //     nums[left] = nums[right];
-        //     nums[right] = temp;
-        //     left++;
-        //     right--;
         
-        //or  o(n) time  and o(1)
+        // o(n) time  and o(1)
        int n = nums.length;
         int index = -1;
         // Find break point
@@ -50,23 +16,34 @@ class Solution {
         if (index != -1) {
             for (int j = n - 1; j > index; j--) {
                 if (nums[j] > nums[index]) {
-                    int temp = nums[j];
-                    nums[j] = nums[index];
-                    nums[index] = temp;
+                    // int temp = nums[j];
+                    // nums[j] = nums[index];
+                    // nums[index] = temp;
+                    // break;
+                    swap(nums,index,j);
                     break;
                 }
             }
         }
+         // Reverse the elements from index+1 to the end
+        reverse(nums,index+1,n-1);
+    }
         
-        // Reverse the elements from index+1 to the end
-        int left = index + 1;
-        int right = n - 1;
-        while (left < right) {
+       
+        public static void reverse(int nums[],int left,int right){
+             while (left < right) {
             int temp = nums[left];
             nums[left] = nums[right];
             nums[right] = temp;
             left++;
             right--;
         }
-    }
+        }
+            public static void swap(int nums[],int start,int end){
+                int temp = nums[start];
+                nums[start] = nums[end];
+                nums[end] = temp;
+            }
+            
+        
 }
