@@ -98,6 +98,8 @@ class Solution {
 //             }
 //         }
 // }
+        
+        //o(m+n) time and spac e O(1)
       int l = m-1;
         int r = n-1;
         int k = m+n-1;
