@@ -1,5 +1,8 @@
 class Solution {
     public int search(int[] nums, int target) {
+        
+        //Time Complexity: O(log n)
+          //Space Complexity: O(1)
         int n = nums.length;
         int left =0;
         int right = n-1;
