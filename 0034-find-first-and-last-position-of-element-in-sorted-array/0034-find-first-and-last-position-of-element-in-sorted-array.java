@@ -48,41 +48,94 @@ class Solution {
         
         //o(logn)time and o(1)space complexity using lower and upper bound 
         
-        int lb = lowerBound(nums,target);
-        int ub = upperBound(nums,target);
-        if(lb== nums.length || nums[lb]!=target){
+//         int lb = lowerBound(nums,target);
+//         int ub = upperBound(nums,target);
+//         if(lb== nums.length || nums[lb]!=target){
+//             return new int[]{-1,-1};
+// }
+//         return new int[]{lb,ub-1};
+//     }
+//      public static int lowerBound(int nums[],int x){
+//         int left=0;
+//         int right = nums.length-1;
+//             int ans = nums.length;
+//             while(left<=right){
+//                 int mid = (left+right)/2;
+//                 if(nums[mid]>=x){
+//                     ans = mid;
+//                     right = mid-1;
+//                 }else{
+//                     left = mid+1;
+//                 }
+//             }
+//             return ans;
+//         }
+//          public static int upperBound(int nums[],int x){
+//         int left=0;
+//         int right = nums.length-1;
+//             int ans = nums.length;
+//             while(left<=right){
+//                 int mid = (left+right)/2;
+//                 if(nums[mid]>x){
+//                     ans = mid;
+//                     right = mid-1;
+//                 }else{
+//                     left = mid+1;
+//                 }
+//             }
+//              return ans;
+//         }
+// }
+        
+        //o(logn)time and o(1)space using binary search
+        int first = firstOccurance(nums,target);
+        int last = lastOccurance(nums,target);
+        if(first==-1){
             return new int[]{-1,-1};
-}
-        return new int[]{lb,ub-1};
-    }
-     public static int lowerBound(int nums[],int x){
-        int left=0;
-        int right = nums.length-1;
-            int ans = nums.length;
-            while(left<=right){
-                int mid = (left+right)/2;
-                if(nums[mid]>=x){
-                    ans = mid;
-                    right = mid-1;
-                }else{
-                    left = mid+1;
-                }
-            }
-            return ans;
         }
-         public static int upperBound(int nums[],int x){
-        int left=0;
-        int right = nums.length-1;
-            int ans = nums.length;
-            while(left<=right){
-                int mid = (left+right)/2;
-                if(nums[mid]>x){
-                    ans = mid;
-                    right = mid-1;
-                }else{
-                    left = mid+1;
+        
+        return new int[]{first,last};
+        
+    }
+    //find first occurance 
+      public static int firstOccurance(int nums[],int target){
+            int first =-1;
+            int left =0;
+            int right = nums.length-1;
+                
+                while(left<=right){
+                    int mid = (left+right)/2;
+                    if(nums[mid]==target){
+                        first = mid;
+                        right = mid-1;
+                        
+                        
+                    }else if(nums[mid]>target){
+                        right = mid-1;
+                    }else{
+                        left = mid+1;
+                    }
                 }
-            }
-             return ans;
+            return first;
+        }
+           public static int lastOccurance(int nums[],int target){
+            int last =-1;
+            int left =0;
+            int right = nums.length-1;
+                
+                while(left<=right){
+                    int mid = (left+right)/2;
+                    if(nums[mid]==target){
+                        last = mid;
+                        left = mid+1;
+                        
+                        
+                    }else if(nums[mid]>target){
+                        right = mid-1;
+                    }else{
+                        left = mid+1;
+                    }
+                }
+            return last;
         }
 }
