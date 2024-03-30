@@ -34,10 +34,10 @@ class Solution {
         }
         
         if (first != -1) {
-            while (last + 1 < n && nums[last + 1] == target) {
+            while (last < n && nums[last] == target) {
                 last++;
             }
-            return new int[]{first, last}; // Return the range of occurrences
+            return new int[]{first, last-1}; // Return the range of occurrences
         }
         
         return new int[]{-1, -1}; // Target element not found
