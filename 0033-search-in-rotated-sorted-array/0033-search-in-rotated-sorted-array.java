@@ -11,29 +11,37 @@ class Solution {
 // }
         
         //o(logn) time and o(1) space 
-        int left =0;
+     int left =0;
         int right = nums.length-1;
         while(left<=right){
             int mid = (left+right)/2;
-            if(nums[mid]==target){
+            if(nums[mid]== target){
+                 // if mid points to the target
                 return mid;
             }
             //check array is sorted or not
+            // if left part is sorted
             if(nums[left]<=nums[mid]){
                 if(nums[left]<=target && target<=nums[mid]){
+                    // element exists
                     right = mid-1;
-                    
                 }else{
+                     // element does not exist
                     left = mid+1;
                 }
-            }else{
+                
+            }else{// if right part is sorted
                 if(nums[mid]<=target && target<=nums[right]){
-                    left = mid+1;
+                    // element exists
+                    left=mid+1;
                 }else{
-                    right=mid-1;
+                    // element does not exist
+                    right = mid-1;
                 }
+                
             }
+            
         }
-        return -1;
+       return -1;
     }
 }
