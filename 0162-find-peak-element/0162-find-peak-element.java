@@ -1,22 +1,17 @@
 class Solution {
     public int findPeakElement(int[] nums) {
-         int left = 0;
-        int right =nums.length - 1;
-
-        while (left < right) {
-            int mid = left + (right - left) / 2;
-
-            // Check if mid is a peak
-            if (nums[mid] > nums[mid + 1]) {
-                right = mid; // Peak might be on the left side
-            } else {
-                left = mid + 1; // Peak might be on the right side
+        int n = nums.length;
+        if (n == 1) {
+            return 0; // Single element is a peak
+        }
+        
+        for(int i = 0; i < n; i++) {
+            // Check if nums[i] is a peak
+            if ((i == 0 || nums[i] > nums[i - 1]) && (i == n - 1 || nums[i] > nums[i + 1])) {
+                return i; // Return index of the peak element
             }
         }
-
-        return left; // or right, as left will be equal to right when loop breaks
-    }
-
         
-    
+        return -1; // No peak element found
+    }
 }
