@@ -32,9 +32,9 @@ class Solution {
 //         return ans;
 //     }
 // }
-          if (x == 0 || x == 1) {
-            return x;
-        }
+        //   if (x == 0 || x == 1) {
+        //     return x;
+        // }
 
         int left = 1;
         int right = x;
