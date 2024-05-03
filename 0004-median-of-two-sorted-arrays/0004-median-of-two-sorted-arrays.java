@@ -1,8 +1,9 @@
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        //time o(m+n) and space o(n)
         int i=0 ,j=0,k=0;
         int m[] = new int[nums1.length+nums2.length];
-        while(i<nums1.length&&j<nums2.length){
+        while(i<nums1.length&&j<nums2.length && k<=m.length){
          if(nums1[i]<nums2[j]){
              m[k] = nums1[i];
              i++;
@@ -16,13 +17,13 @@ class Solution {
         }
         
         //rest of elements
-        while(i<nums1.length){
+        while(i<nums1.length && k<=m.length){
             m[k] = nums1[i];
             i++;
             k++;
             
         }
-        while(j<nums2.length){
+        while(j<nums2.length&&k<=m.length){
             m[k]=nums2[j];
             j++;
             k++;
