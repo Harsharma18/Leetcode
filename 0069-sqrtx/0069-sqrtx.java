@@ -38,11 +38,11 @@ class Solution {
         int ans = 0;
 
         while (left <= right) {
-            int mid = left + (right - left) / 2;
-            long val = (long) mid * mid;
+            int  mid = left + (right - left) / 2;
+            long val = (long)mid * mid;
 
             if (val == x) {
-                return mid; // If square of mid equals x, mid is the square root
+                return  mid; // If square of mid equals x, mid is the square root
             } else if (val < x) {
                 ans = mid;
                 left = mid + 1;
