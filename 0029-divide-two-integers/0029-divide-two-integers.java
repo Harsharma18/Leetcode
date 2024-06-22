@@ -21,10 +21,11 @@ class Solution {
              n = n-(d<<count);
             
         }
-        if(ans==( 1<<31 )&& sign){
+        //for overflow cases 
+        if(ans<=( 1<<31 )&& sign){
             return Integer.MAX_VALUE;
         }
-        if(ans==(1<<31) && !sign){
+        if(ans<=(1<<31) && !sign){
             return Integer.MIN_VALUE;
         }
         return sign ? (int)ans:-(int)ans;
