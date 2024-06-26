@@ -34,6 +34,8 @@ class Solution {
 //         return new int[]{-1, -1};
 //     }
 // }
+        // O(n * log(m))time and o(1)space
+        
        int n = mat.length;
         int m = mat[0].length;
         int left = 0;
