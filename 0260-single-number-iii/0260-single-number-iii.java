@@ -1,22 +1,24 @@
 class Solution {
     public int[] singleNumber(int[] nums) {
+        Arrays.sort(nums);
         int xor = 0;
-        for (int num : nums) {
-            xor ^= num;
+        for(int i=0;i<nums.length;i++){
+             xor = xor^nums[i];
+
         }
-
-        // Find the rightmost set bit of xor
-        int rightmost = xor & -xor;
-
-        int num1 = 0, num2 = 0;
-        for (int num : nums) {
-            if ((num & rightmost) == 0) {
-                num1 ^= num;
-            } else {
-                num2 ^= num;
+        int lowestBit = xor & -xor;
+        int result[] = new int[2];
+        for(int i=0;i<nums.length;i++){
+            if((lowestBit & nums[i] )==0){
+                result[0] = result[0]^nums[i];
+                
+            }else{
+                result[1] = result[1]^nums[i];
+                
             }
         }
-
-        return new int[] {num1, num2};
+        return result;
+        
+        
     }
 }
