@@ -1,18 +1,18 @@
-import java.util.*;
-
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>();
-        backtrack(result, new ArrayList<>(), nums, 0);
-        return result;
-    }
-    
-    private void backtrack(List<List<Integer>> result, List<Integer> tempList, int[] nums, int start) {
-        result.add(new ArrayList<>(tempList));
-        for (int i = start; i < nums.length; i++) {
-            tempList.add(nums[i]);
-            backtrack(result, tempList, nums, i + 1);
-            tempList.remove(tempList.size() - 1);
+        List<List<Integer>> ans = new ArrayList<>();
+        int subsets = 1 << nums.length; // Total number of subsets
+        
+        for (int i = 0; i < subsets; i++) {
+            List<Integer> list = new ArrayList<>();
+            for (int j = 0; j < nums.length; j++) {
+                if ((i & (1 << j)) != 0) {
+                    list.add(nums[j]);
+                }
+            }
+            ans.add(list);
         }
+        
+        return ans;
     }
 }
