@@ -1,5 +1,6 @@
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {
+       // o(2^n*n) time and space complexity
      
         // Initialize a list to store all subsets
            List<List<Integer>> ans = new ArrayList<>(); 
