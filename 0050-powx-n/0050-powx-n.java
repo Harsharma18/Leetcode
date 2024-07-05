@@ -5,12 +5,12 @@ class Solution {
         }
         
         double ans = 1;
-        long absN = Math.abs((long)n); // Use long to handle the edge case for Integer.MIN_VALUE
+        double  absN = Math.abs((double)n);
         
         while (absN > 0) {
             if (absN % 2 == 1) {
                 ans *= x;
-                // absN = absN-1;
+                absN = absN-1;
             }
             x *= x;
             absN /= 2;
