@@ -10,7 +10,7 @@ class Solution {
         while (absN > 0) {
             if (absN % 2 == 1) {
                 ans *= x;
-                absN = absN-1;
+                // absN = absN-1;
             }
             x *= x;
             absN /= 2;
