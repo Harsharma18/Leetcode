@@ -1,23 +1,24 @@
-public class Solution {
+class Solution {
+    public  long  MOD = 1_000_000_007;
     public int countGoodNumbers(long n) {
-        int MOD = 1000000007;
-        long count = 1;
-        long a = powMod(5, (n + 1) / 2, MOD);
-        long b = powMod(4, n / 2, MOD);
-        count = (a * b) % MOD;
-        return (int) count;
+        //how  many index i s even or odd
+        long even = (n+1)/2;  
+        long  odd = n/2;
+        long evenPlace = pow(5,even)%MOD;
+        long  oddPlace = pow(4,odd)%MOD;
+          return (int)((evenPlace*oddPlace) % MOD);
+         
     }
-
-    // Helper method to calculate (x^y) % mod
-    private long powMod(long x, long y, int mod) {
-        long result = 1;
-        while (y > 0) {
-            if (y % 2 != 0) {
-                result = (result * x) % mod;
-            }
-            x = (x * x) % mod;
-            y /= 2;
+    public long  pow( long x,long m){
+        if(m==0) return 1;
+        long temp = pow(x,m/2);
+        if(m%2==0){
+            return (temp*temp)% MOD;
+        }else{
+            return (x*temp*temp)% MOD;
         }
-        return result;
+        
+       
+        
     }
 }
