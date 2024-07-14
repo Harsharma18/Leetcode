@@ -1,21 +1,22 @@
-import java.util.ArrayList;
-import java.util.List;
-
 class Solution {
-    public List<String> generateParenthesis(int n) {
-        List<String> result = new ArrayList<>();
-        generateParenthesisHelper(result, "", 0, 0, n);
-        return result;
-    }
-
-    private void generateParenthesisHelper(List<String> result, String current, int open, int close, int max) {
-        if (current.length() == max * 2) {
-            result.add(current);
+    public static void helper(String str, int open, int close, List<String> gp, int n) {  
+        if (open == n && close == n) {
+            gp.add(str);
             return;
         }
-        if (open < max)
-            generateParenthesisHelper(result, current + "(", open + 1, close, max);
-        if (close < open)
-            generateParenthesisHelper(result, current + ")", open, close + 1, max);
+        // Add open parenthesis if open < n
+        if (open < n) {
+            helper(str + "(", open + 1, close, gp, n);
+        }
+        // Add close parenthesis if close < open
+        if (close < open) {
+            helper(str + ")", open, close + 1, gp, n);
+        }
+    }
+
+    public List<String> generateParenthesis(int n) {
+        List<String> gp = new ArrayList<>();
+        helper("", 0, 0, gp, n);
+        return gp;
     }
 }
