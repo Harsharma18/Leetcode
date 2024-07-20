@@ -1,22 +1,27 @@
 class Solution {
-    public static void helper(String str, int open, int close, List<String> gp, int n) {  
-        if (open == n && close == n) {
-            gp.add(str);
-            return;
+  
+    public static void goodString(int n,String curr,int open ,int close,List<String>res){
+       
+        
+        if(open==n && close==n){
+            res.add(curr);
+            
         }
-        // Add open parenthesis if open < n
-        if (open < n) {
-            helper(str + "(", open + 1, close, gp, n);
+        //add open
+        if(open<n){
+            goodString(n,curr+"(" ,open+1,close,res);
         }
-        // Add close parenthesis if close < open
-        if (close < open) {
-            helper(str + ")", open, close + 1, gp, n);
+    //add close 
+        if(close<open){
+           goodString(n,curr+")" ,open,close+1,res);
         }
+        
     }
-
-    public List<String> generateParenthesis(int n) {
-        List<String> gp = new ArrayList<>();
-        helper("", 0, 0, gp, n);
-        return gp;
+    public List<String>generateParenthesis(int n) {
+        List<String>res = new ArrayList<>();
+        goodString(n,"",0,0,res);
+        return res;
+        
     }
 }
+    
