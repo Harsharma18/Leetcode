@@ -1,28 +1,26 @@
 class Solution {
-    public List<List<Integer>> subsets(int[] nums) {
-       // o(2^n*n) time and space complexity
-     
-        // Initialize a list to store all subsets
-           List<List<Integer>> ans = new ArrayList<>(); 
-        // Calculate total number of subsets (2^nums.length)
-        int subsets = 1 << nums.length;  
-        // Iterate through all possible subsets (from 0 to subsets - 1)
-        for (int i = 0; i < subsets; i++) {  
-             // Initialize a list to store current subset
-            List<Integer> list = new ArrayList<>(); 
-            // Iterate through each element in nums array
-            for (int j = 0; j < nums.length; j++) {  
-                // Check if jth bit of i is set
-                if ((i & (1 << j)) != 0) {  
-                     // Add nums[j] to the current subset if the jth bit is set
-                    list.add(nums[j]); 
+    // Helper method to generate all subsets using bit manipulation
+    public static void Subsets(List<List<Integer>> result, int nums[]) {
+        int n = nums.length;
+        int totalSubsets = 1 << n; // Total number of subsets is 2^n
+
+        // Iterate over all possible combinations
+        for (int i = 0; i < totalSubsets; i++) {
+            List<Integer> subset = new ArrayList<>();
+            for (int j = 0; j < n; j++) {
+                // Check if the j-th bit in i is set
+                if ((i & (1 << j)) != 0) {
+                    subset.add(nums[j]);
                 }
             }
-            // Add current subset to the final list of subsets
-            
-            ans.add(list);  
+            result.add(subset);
         }
-        // Return the list of all subsets
-        return ans;  
+    }
+
+    // Method to return all subsets of the given array
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        Subsets(result, nums);
+        return result;
     }
 }
