@@ -55,7 +55,6 @@
 //     }
 // }
 //using recurson 
-
 class Solution {
     // Helper method to generate all subsets using recursion
     private void helper(int[] nums, int index, List<Integer> curr, List<List<Integer>> res) {
@@ -76,7 +75,7 @@ class Solution {
     // Method to return all subsets of the given array
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
-        helper(nums, 0, new ArrayList<>(), res);
+        helper(nums, 0, new ArrayList<>(), res); // Initialize the recursion with an empty list
         return res;
     }
 }
