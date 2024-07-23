@@ -12,7 +12,7 @@ class Solution {
 
         // Precompute powers of 2 mod MOD
         for (int i = 1; i < n; i++) {
-            power[i] = (2 * power[i - 1]) % MOD;
+            power[i] = (power[i - 1]<<1) % MOD;
         }
 
         int left = 0;
