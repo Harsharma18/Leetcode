@@ -1,25 +1,39 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 class Solution {
-    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        List<List<Integer>> result = new ArrayList<>();
-        Arrays.sort(candidates);
-        backtrack(result, new ArrayList<>(), candidates, target, 0);
-        return result;
+    public static void helper(int arr[], int target, int index, List<List<Integer>> res, List<Integer> currList) {
+        // Base case: If target is 0, add current list to result
+        if (target == 0) {
+            res.add(new ArrayList<>(currList)); // Copy current list
+            return;
+        }
+
+        // Iterate through candidates starting from index
+        for (int i = index; i < arr.length; i++) {
+            // Skip duplicates
+            if (i > index && arr[i] == arr[i - 1]) {
+                continue;
+            }
+            // If the current element exceeds the target, no need to continue
+            if (arr[i] > target) {
+                break;
+            }
+
+            // Include the current element
+            currList.add(arr[i]);
+            // Recursive call with updated target and index
+            helper(arr, target - arr[i], i + 1, res, currList);
+            // Backtrack: remove the last element
+            currList.remove(currList.size() - 1);
+        }
     }
 
-    private void backtrack(List<List<Integer>> result, List<Integer> temp, int[] candidates, int remain, int start) {
-        if (remain < 0) {
-            return;
-        } else if (remain == 0) {
-            result.add(new ArrayList<>(temp));
-        } else {
-            for (int i = start; i < candidates.length; i++) {
-                if (i > start && candidates[i] == candidates[i - 1]) {
-                    continue;
-                }
-                temp.add(candidates[i]);
-                backtrack(result, temp, candidates, remain - candidates[i], i + 1);
-                temp.remove(temp.size() - 1);
-            }
-        }
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        List<List<Integer>> res = new ArrayList<>();
+        Arrays.sort(candidates); // Sort to handle duplicates
+        helper(candidates, target, 0, res, new ArrayList<>());
+        return res;
     }
 }
