@@ -1,9 +1,6 @@
-import java.util.*;
-
 class Solution {
-    // Array representing the letters for each digit on a phone keypad
-    private static final String[] KEYPAD = {
-        "",    // 0
+    public static final  String[] keyPad = {
+         "",    // 0
         "",    // 1
         "abc", // 2
         "def", // 3
@@ -14,50 +11,34 @@ class Solution {
         "tuv", // 8
         "wxyz" // 9
     };
-    
-    // Function to combine letters from the current digit with existing combinations
-    private void combine(List<String> result, String letters) {
-        List<String> newResult = new ArrayList<>();
-        
-        // Loop through each existing combination
-        for (int i = 0; i < result.size(); i++) {
-            String combination = result.get(i);
-            
-            // Loop through each letter corresponding to the current digit
-            for (int j = 0; j < letters.length(); j++) {
-                // Create a new combination and add it to the new result list
-                newResult.add(combination + letters.charAt(j));
-            }
-        }
-        
-        // Update the original result list with the new combinations
-        result.clear();
-        result.addAll(newResult);
-    }
-
-    // Function to get letter combinations based on the input digits
+   public static void helper(List<String>result,String letters){
+       List<String>newResult = new ArrayList<>();
+       for(int i=0;i<result.size();i++){
+           String combination = result.get(i);
+           for(int j=0;j<letters.length();j++){
+               newResult.add(combination+letters.charAt(j));
+           }
+       }
+       result.clear();
+       result.addAll(newResult);
+           
+   
+   }
     public List<String> letterCombinations(String digits) {
-        List<String> result = new ArrayList<>();
-        
-        // Edge case: if digits is empty, return an empty list
-        if (digits == null || digits.isEmpty()) {
+        List<String>result = new ArrayList<>();
+        if(digits==null || digits.isEmpty()){
             return result;
-        }
-        
-        // Start with an empty combination
+}
         result.add("");
+        for(int i=0;i<digits.length();i++){
+            int digit = digits.charAt(i)-'0';  //convert charactger into                  integer and finding which we want 
+            String letters = keyPad[digit];
+            helper(result,letters);
         
-        // Loop over each digit in the input string
-        for (int i = 0; i < digits.length(); i++) {
-            int digit = digits.charAt(i) - '0';  // Convert the character to an integer
-            String letters = KEYPAD[digit];      // Get the corresponding letters for the digit
             
-            // Combine the current set of letters with existing combinations
-            combine(result, letters);
+            
         }
-        
         return result;
+        
     }
-
-    
 }
