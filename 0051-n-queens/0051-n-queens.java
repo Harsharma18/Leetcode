@@ -41,18 +41,29 @@ class Solution {
           
        
       }
-   public static List<String> printBoard(char[][] board) {
-    List<String> printboard = new ArrayList<>();
+//    public static List<String> printBoard(char[][] board) {
+//     List<String> printboard = new ArrayList<>();
     
+//     for (int i = 0; i < board.length; i++) {
+//         StringBuilder row = new StringBuilder();  // Create a StringBuilder for each row
+//         for (int j = 0; j < board[i].length; j++) {
+//             row.append(board[i][j]);  // Efficiently append each character
+//         }
+//         printboard.add(row.toString());  // Convert the row to a String and add to the list
+//     }
+    
+//     return printboard;
+// }
+public static List<String> printBoard(char[][] board) {
+    List<String> printBoard = new ArrayList<>();
     for (int i = 0; i < board.length; i++) {
-        StringBuilder row = new StringBuilder();  // Create a StringBuilder for each row
+        String row = "";
         for (int j = 0; j < board[i].length; j++) {
-            row.append(board[i][j]);  // Efficiently append each character
+            row += board[i][j]; // Append each character to the row string
         }
-        printboard.add(row.toString());  // Convert the row to a String and add to the list
+        printBoard.add(row); // Add the constructed row to the list
     }
-    
-    return printboard;
+    return printBoard;
 }
 
     public   List<List<String>> solveNQueens(int n) {
