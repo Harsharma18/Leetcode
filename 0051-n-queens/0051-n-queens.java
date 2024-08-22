@@ -65,6 +65,7 @@ public static List<String> printBoard(char[][] board) {
     }
     return printBoard;
 }
+    
 
     public   List<List<String>> solveNQueens(int n) {
         List<List<String>>result = new ArrayList<>();
