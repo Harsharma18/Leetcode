@@ -1,23 +1,49 @@
 class Solution {
     public String removeOuterParentheses(String s) {
-        String result  = "";
+        StringBuilder sb = new StringBuilder();
         int count = 0;
         for(int i=0;i<s.length();i++){
-            char c = s.charAt(i);
-            if(c=='('){
-               
+            char ch = s.charAt(i);
+            if(ch=='('){
                 if(count>0){
-                    result+=c;
+                     sb.append(ch);
+                    
                 }
-                 count++;
-                
+                count++;
+               
             }else{
                 count--;
                 if(count>0){
-                    result+=c;
+                 sb.append(ch);
                 }
+                
             }
+            
         }
-        return result;
+        return sb.toString();
+        
     }
 }
+// class Solution {
+//     public String removeOuterParentheses(String s) {
+//         String result  = "";
+//         int count = 0;
+//         for(int i=0;i<s.length();i++){
+//             char c = s.charAt(i);
+//             if(c=='('){
+               
+//                 if(count>0){
+//                     result+=c;
+//                 }
+//                  count++;
+                
+//             }else{
+//                 count--;
+//                 if(count>0){
+//                     result+=c;
+//                 }
+//             }
+//         }
+//         return result;
+//     }
+// }
